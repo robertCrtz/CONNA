@@ -1,3 +1,33 @@
+<?php 
+    include "bd/conexion.php";
+
+    $alert = '';
+
+    if(!empty($_POST))
+    {
+        if(empty($_POST['usuario']) || empty($_POST ['contrasena']))
+        {
+            $alert = 'Ingrese su usuario y su clave';
+        }else{
+
+            $usuario = $_POST['usuario'];
+            $contrasena = $_POST['contrasena'];
+
+            $query = mysql_query($con, "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'");
+            $resultado = mysql_num_rows($query);
+
+            if($resultado > 0)
+            {
+                $data = mysql_fetch_array($query);
+
+                print_r($data);
+            }
+        }
+    }
+?>
+
+
+
 <!doctype html>
 <html>
     <head>
@@ -5,10 +35,10 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Login con  PHP - Bootstrap 4</title>
+        <title>Iniciar Sesión</title>
 
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="Estilos/estilos.css">
+        <link rel="stylesheet" href="estilos.css">
         <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">        
         
         <link rel="stylesheet" type="text/css" href="fuentes/iconic/css/material-design-iconic-font.min.css">
@@ -19,8 +49,8 @@
      
       <div class="container-login">
         <div class="wrap-login">
-            <form class="login-form validate-form" id="formLogin" action="" method="post">
-                <span class="login-form-title">LOGIN</span>
+            <form class="login-form validate-form" id="formLogin" action="bd/login.php" method="POST">
+                <span class="login-form-title">INICIAR SESIÓN</span>
                 
                 <div class="wrap-input100" data-validate = "Usuario incorrecto">
                     <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario">
@@ -28,7 +58,7 @@
                 </div>
                 
                 <div class="wrap-input100" data-validate="Password incorrecto">
-                    <input class="input100" type="password" id="password" name="password" placeholder="Password">
+                    <input class="input100" type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
                     <span class="focus-efecto"></span>
                 </div>
                 
