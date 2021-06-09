@@ -1,20 +1,24 @@
 <?php
 include 'conexion.php';
+
+$usuario=$_POST['usuario'];
+$contrasena=$_POST['contrasena'];
 session_start();
+$_SESSION['usuario']=$usuario;
 
-//recepción de datos enviados mediante POST
-$usuario = $_POST['usuario'];
-$contrasena = $_POST['contrasena'];
+$consulta="SELECT*FROM usuarios WHERE usuario='$usuario' and contrasena='$contrasena'";
+$resultado=mysqli_query($con,$consulta);
 
-$pass = md5($contrasena); //encripto la clave enviada por el usuario para compararla con la clava encriptada y almacenada en la BD
+$filas=mysqli_num_rows($resultado);
 
-$query = "SELECT COUNT (*) AS contar FROM usuarios WHERE usuario='$usuario' AND contrasena='$contrasena' ";
-$consulta = mysqli_query($con, $query);
-$array = mysqli_fetch_array($con, $consulta);
+if($filas){
+  
+    header("location:../vistas/pag_inicio.php");
 
-if($array['contar']>0){
-    $_SESSION['usuario'] = $usuario;
-    header("location: ../dashbord.php/index.php");
 }else{
-    echo "Datos incorrectos";
+    ?>
+  <h1 class="bad">ERROR DE AUTENTIFICACION</h1>
+  <?php
 }
+mysqli_free_result($resultado);
+mysqli_close($con);
