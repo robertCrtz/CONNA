@@ -1,33 +1,3 @@
-<?php 
-    include "bd/conexion.php";
-
-    $alert = '';
-
-    if(!empty($_POST))
-    {
-        if(empty($_POST['usuario']) || empty($_POST ['contrasena']))
-        {
-            $alert = 'Ingrese su usuario y su clave';
-        }else{
-
-            $usuario = $_POST['usuario'];
-            $contrasena = $_POST['contrasena'];
-
-            $query = mysql_query($con, "SELECT * FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'");
-            $resultado = mysql_num_rows($query);
-
-            if($resultado > 0)
-            {
-                $data = mysql_fetch_array($query);
-
-                print_r($data);
-            }
-        }
-    }
-?>
-
-
-
 <!doctype html>
 <html>
     <head>
@@ -37,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Iniciar Sesión</title>
 
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="estilos/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="estilos.css">
         <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">        
         
@@ -67,15 +37,15 @@
                         <div class="login-form-bgbtn"></div>
                         <button type="submit" name="submit" class="login-form-btn">CONECTAR</button>
                     </div>
+                    <div class="mt-3"><a href="registro.php">Registrate acá!</a></div>
                 </div>
             </form>
         </div>
     </div>     
         
-        
-     <script src="jquery/jquery-3.3.1.min.js"></script>    
+         
      <script src="bootstrap/js/bootstrap.min.js"></script>    
-     <script src="popper/popper.min.js"></script>    
+     <script src="estilos/popper/popper.min.js"></script>    
         
      <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>    
      <script src="codigo.js"></script>    
