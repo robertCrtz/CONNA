@@ -79,6 +79,11 @@
                     <input class="input100" type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
                     <span class="focus-efecto"></span>
                 </div>
+
+                <!--<div class="wrap-input100" data-validate="Rol incorrecto">
+                    <input class="input100" type="text" id="rol" name="rol" placeholder="Rol">
+                    <span class="focus-efecto"></span>
+                </div>-->
                 
                 <div class="container-login-form-btn">
                     <div class="wrap-login-form-btn">
