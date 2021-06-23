@@ -1,5 +1,36 @@
 body{
     width: 100%; 
-    background: -webkit-linear-gradient(to right, #e7fd21, #ffffff);
-    background: linear-gradient(to right, #e7fd21, #f8f8f8);
+    background: -webkit-linear-gradient(to right, #f7ffaf, #ffffff);
+    background: linear-gradient(to right, #dfdfdf, #f8f8f8);
 }
+
+.container{
+    max-width: 95%;
+}
+
+footer {
+    width: 100%;
+    background: rgb(29, 29, 29);
+    color: white;
+    bottom: 0%;
+    position: sticky;
+    margin-bottom: -60px;
+    text-align: center;
+}
+
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+  .fixed-top, .sb-nav-fixed #layoutSidenav #layoutSidenav_nav, .sb-nav-fixed .sb-topnav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
