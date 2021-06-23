@@ -1,41 +1,35 @@
-$('#formLogin').submit(function(e){
-   e.preventDefault();
-   var usuario = $.trim($("#usuario").val());    
-   var password =$.trim($("#password").val());    
-    
-   if(usuario.length == "" || password == ""){
-      Swal.fire({
-          type:'warning',
-          title:'Debe ingresar un usuario y/o password',
-      });
-      return false; 
-    }else{
-        $.ajax({
-           url:"bd/login.php",
-           type:"POST",
-           datatype: "json",
-           data: {usuario:usuario, password:password}, 
-           success:function(data){               
-               if(data == "null"){
-                   Swal.fire({
-                       type:'error',
-                       title:'Usuario y/o password incorrecta',
-                   });
-               }else{
-                   Swal.fire({
-                       type:'success',
-                       title:'¡Conexión exitosa!',
-                       confirmButtonColor:'#3085d6',
-                       confirmButtonText:'Ingresar'
-                   }).then((result) => {
-                       if(result.value){
-                           //window.location.href = "vistas/pag_inicio.php";
-                           window.location.href = "dashboard/index.php";
-                       }
-                   })
-                   
-               }
-           }    
-        });
-    }     
+$(document).ready(function(){   
+    $('#example').dataTable({
+        "language":{
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "sSearch": "Buscar",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior",
+            },
+            "sProcessing": "Procesando...",
+        }
+    });
 });
+(function($) {
+    "use strict";
+    // Add active state to sidbar nav links
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+        $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+            if (this.href === path) {
+                $(this).addClass("active");
+            }
+        });
+
+    // Toggle the side navigation
+    $("#sidebarToggle").on("click", function(e) {
+        e.preventDefault();
+        $("body").toggleClass("sb-sidenav-toggled");
+    });
+})(jQuery);
