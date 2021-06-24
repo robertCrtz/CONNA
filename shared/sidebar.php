@@ -7,6 +7,9 @@
                         <i class="fas fa-home"></i>
                     </div>Menú Principal
                 </a>
+
+
+                <?php //if($id_rol == 2) { ?>
                 <div class="sb-sidenav-menu-heading">Control</div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
@@ -18,10 +21,12 @@
                     </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link"href="../vistas/agregar.php">Agregar Caso</a>
+                        <a class="nav-link" href="../vistas/agregar.php">Agregar Caso</a>
                         <a class="nav-link">Eliminar Caso</a>
                     </nav>
                 </div>
+                <?php// } ?>
+                
 
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
                         <div class="sb-nav-link-icon">
@@ -39,7 +44,7 @@
                 </div>
 
                 <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="../vistas/graficas.php">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-chart-area"></i>
                         </div>Charts
