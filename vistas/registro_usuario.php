@@ -11,7 +11,7 @@
             $alert='<p>Todos los campos son obligatorios</p>';
         }else{
 
-            include 'bd/conexion.php';
+            include '../bd/conexion.php';
 
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
@@ -69,7 +69,7 @@
                 <main>
                     <div class="container">
                         <span class="login-form-title">REGISTRAR USUARIO</span>
-                            <form class="form-control needs-validation" id="formLogin" action="registro.php" method="POST" novalidate>
+                            <form class="form-control needs-validation" id="formLogin" action="registro_usuario.php" method="POST" novalidate>
 
                                 <label for="validationCustom05" class="form-label">Nombre</label>
                                     <input class="form-control" type="text" id="validationCustom05" name="nombre">
@@ -95,20 +95,16 @@
                                 
                                 <div class="container">
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">Agregar</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
                                     </div>
                                 </div>
                             </form>
                     </div>     
-                <main>
+                </main>
                 <?php include '../shared/footer.php' ?>
             </div>
         </div>
-         
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../codigo.js"></script>  
-           
-     <script src="../codigo.js"></script>    
+        <script src="../estilos/demo/chart-bar-demo.js"></script>
+        <script src="../codigo.js"></script>     
     </body>
 </html>
