@@ -17,7 +17,7 @@
             $apellido = $_POST['apellido'];
             $usuario = $_POST['usuario'];
             $contrasena = $_POST['contrasena'];
-            $rol = $_POST['rol'];
+            $id_rol = $_POST['id_rol'];
 
             $query = mysqli_query($con,"SELECT * FROM usuarios WHERE nombre = '$nombre' OR usuario = '$usuario'");
             $resultado = mysqli_fetch_array($query);
@@ -25,8 +25,8 @@
             if($resultado > 0){
                 $alert = '<p>El correo o el usuario ya existe</p>';
             }else{
-                $query_insert = mysqli_query($con, "INSERT INTO usuarios(usuario, contrasena, nombre, apellido, rol)
-                VALUES('$usuario','$contrasena','$nombre','$apellido','$rol')");
+                $query_insert = mysqli_query($con, "INSERT INTO usuarios(usuario, contrasena, nombre, apellido, id_rol)
+                VALUES('$usuario','$contrasena','$nombre','$apellido','$id_rol')");
 
                 //Si los datos enviados son TRUE...
                 if($query_insert){ 
@@ -48,11 +48,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Registrar Usuario</title>
         <link href="../estilos/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../estilos.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <!-- Sweet Alert -->
+        <link rel="stylesheet" href="../estilos/package/dist/sweetalert2.min.css">
     </head>
-    
     <body  class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="#">CONNA</a>
@@ -67,44 +69,52 @@
             <?php include '../shared/sidebar.php' ?>
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container">
-                        <span class="login-form-title">REGISTRAR USUARIO</span>
-                            <form class="form-control needs-validation" id="formLogin" action="registro_usuario.php" method="POST" novalidate>
+                    <div class="container ">
+                        <h1 class="text-center mt-2 mb-2">Registro de Usuarios</h1>
+                        <form class="login-form validate-form" action="registro_usuario.php" method="POST">
 
-                                <label for="validationCustom05" class="form-label">Nombre</label>
-                                    <input class="form-control" type="text" id="validationCustom05" name="nombre">
+                            <div class="wrap-input100" data-validate="Campo incorrecto">
+                                <input class="mb-2 input100" type="text" id="nombre" name="nombre" placeholder="Nombre">
+                                <span class="focus-efecto"></span>
+                            </div>
 
-                                <div class="wrap-input100" data-validate="Campo incorrecto">
-                                    <input class="form-control" type="text" id="apellido" name="apellido" placeholder="Apellido">
-                                    <span class="focus-efecto"></span>
+                            <div class="wrap-input100" data-validate="Campo incorrecto">
+                                <input class="mb-2 input100" type="text" id="apellido" name="apellido" placeholder="Apellido">
+                                <span class="focus-efecto"></span>
+                            </div>
+                            
+                            <div class="wrap-input100" data-validate = "Usuario incorrecto">
+                                <input class="mb-2 input100" type="text" id="usuario" name="usuario" placeholder="Correo electrónico">
+                                <span class="focus-efecto"></span>
+                            </div>
+                            
+                            <div class="wrap-input100" data-validate="Contraseña incorrecta">
+                                <input class="mb-2 input100" type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+                                <span class="focus-efecto"></span>
+                            </div>
+                            <div class="wrap-input100" data-validate="Seleccione un rol">
+                                <select class="form-control mb-2 input100" id="id_rol" name="id_rol" placeholder="Rol">
+                                    <option disabled selected>Seleccionar rol</option>
+                                    <option value="1">Visualizador</option>
+                                    <option value="2">Administrador</option>
+                                </select>
+                                <span class="focus-efecto"></span>
+                            </div>
+                            
+                            <div class="container">
+                                <div class="col-12">
+                                    <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
                                 </div>
-                                
-                                <div class="wrap-input100" data-validate = "Usuario incorrecto">
-                                    <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Correo electrónico">
-                                    <span class="focus-efecto"></span>
-                                </div>
-                                
-                                <div class="wrap-input100" data-validate="Password incorrecto">
-                                    <input class="form-control" type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
-                                    <span class="focus-efecto"></span>
-                                </div>
-                                    <select class="form-control" id="rol" name="rol" placeholder="Rol">
-                                        <option value="Visualizador">Visualizador</option>
-                                        <option value="Administrador">Administrador</option>
-                                    </select>
-                                
-                                <div class="container">
-                                    <div class="col-12">
-                                        <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
+                        </form>
                     </div>     
                 </main>
                 <?php include '../shared/footer.php' ?>
             </div>
         </div>
-        <script src="../estilos/demo/chart-bar-demo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../codigo.js"></script>     
+        <script src="../estilos/dist/swettalert2.all.min.js"></script>
     </body>
 </html>
