@@ -4,7 +4,7 @@
         $alert = '';
         if(empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['usuario']) || empty($_POST['contrasena']))
         {
-            $alert='<p>Todos los campos osn obligatorios</p>';
+            $alert='<p>Todos los campos son obligatorios</p>';
         }else{
 
             include 'bd/conexion.php';
@@ -13,6 +13,7 @@
             $apellido = $_POST['apellido'];
             $usuario = $_POST['usuario'];
             $contrasena = $_POST['contrasena'];
+            $id_rol = $_POST['id_rol'];
 
             $query = mysqli_query($con,"SELECT * FROM usuarios WHERE nombre = '$nombre' OR usuario = '$usuario'");
             $resultado = mysqli_fetch_array($query);
@@ -20,8 +21,8 @@
             if($resultado > 0){
                 $alert = '<p>El correo o el usuario ya existe</p>';
             }else{
-                $query_insert = mysqli_query($con, "INSERT INTO usuarios(usuario, contrasena, nombre, apellido)
-                VALUES('$usuario','$contrasena','$nombre','$apellido')");
+                $query_insert = mysqli_query($con, "INSERT INTO usuarios(usuario, contrasena, nombre, apellido, rol)
+                VALUES('$usuario','$contrasena','$nombre','$apellido','$rol')");
 
                 //Si los datos enviados son TRUE...
                 if($query_insert){ 
@@ -46,10 +47,9 @@
         <title>Registrar Usuario</title>
 
         <link rel="stylesheet" href="estilos/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="estilos.css">
-        <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">        
+        <link rel="stylesheet" href="estilos.css">       
         
-        <link rel="stylesheet" type="text/css" href="fuentes/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="../estilos/fuentes/iconic/css/material-design-iconic-font.min.css">
         
     </head>
     
@@ -79,11 +79,10 @@
                     <input class="input100" type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
                     <span class="focus-efecto"></span>
                 </div>
-
-                <!--<div class="wrap-input100" data-validate="Rol incorrecto">
-                    <input class="input100" type="text" id="rol" name="rol" placeholder="Rol">
-                    <span class="focus-efecto"></span>
-                </div>-->
+                    <select class="input100" id="rol" name="rol" placeholder="Rol">
+                        <option value="Visualizador">Visualizador</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
                 
                 <div class="container-login-form-btn">
                     <div class="wrap-login-form-btn">
@@ -99,8 +98,7 @@
          
      <script src="estilos/bootstrap/js/bootstrap.min.js"></script>    
      <script src="estilos/popper/popper.min.js"></script>    
-        
-     <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>    
+           
      <script src="codigo.js"></script>    
     </body>
 </html>

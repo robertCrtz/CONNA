@@ -43,3 +43,11 @@ $(document).ready(function (){
         }).show();
     })
 });
+
+function MostrarAlerta(){
+    Swal.fire(
+        'Good job',
+        'Clicked the button',
+        'success'
+    );
+}
