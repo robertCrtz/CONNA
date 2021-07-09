@@ -7,7 +7,7 @@
     }
     $nombre = $_SESSION['nombre'];
 
-    $sql="SELECT * FROM control";
+    $sql="SELECT * FROM tipo_acogimiento";
     $resultado=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
@@ -36,8 +36,58 @@
             <!--sidebar-->
             <?php include '../shared/sidebar.php' ?>
             <div id="layoutSidenav_content">
-                <div class="container-fluid">
+                <div class="container">
                     <h1 class="mt-4 text-center">Tipo de acogimiento</h1>
+                        <form class="login-form validate-form" action="registro_usuario.php" method="POST">
+                            <div class="row mt-5">
+                                <div class="col-md-6">                     
+                                    <div class="wrap-input100" data-validate = "Usuario incorrecto">
+                                        <input class="mb-2 input100" type="text" id="usuario" name="usuario" placeholder="Ingresar nuevo tipo de acogimiento">
+                                        <span class="focus-efecto"></span>
+                                    </div>
+
+                                    <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header text-center">
+                                            Tipos de acogimiento registrados
+                                        </div>
+                                        <div class="card-body">
+                                        <div class="table-responsive">
+                                    <table class="table table-bordered"  width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr class="bg-dark text-white">
+                                                <th>#</th>
+                                                <th>Tipo de acogimiento</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr class="bg-dark text-white">
+                                                <th>#</th>
+                                                <th>Tipo de acogimiento</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody class="busquedatabla">
+                                            <?php
+                                                $sql="SELECT * FROM tipo_acogimiento";
+                                                $resultado=mysqli_query($con,$sql);
+                                                 while($fila = mysqli_fetch_array($resultado)) {
+                                                $id_tipoAcogimiento=$fila['id_tipoAcogimiento'];
+                                                $nombreAcogimiento=$fila['nombreAcogimiento'];
+                                                echo "<tr>";
+                                                    echo '<td>'.$id_tipoAcogimiento.'</td>';
+                                                    echo '<td>'.$nombreAcogimiento.'</td>';
+                                                echo "</tr>";
+                                             } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
 
                     
                 </div>

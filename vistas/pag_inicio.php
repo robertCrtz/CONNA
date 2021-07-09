@@ -19,7 +19,7 @@
         <meta name="author" content="" />
         <title>Principal</title>
         <link rel="stylesheet" href="../estilos.css">
-        <link href="../estilos/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../estilos/styles.css">
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -49,7 +49,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered"  width="100%" cellspacing="0">
                                         <thead>
-                                            <tr>
+                                            <tr class="bg-dark text-white">
                                                 <th>#</th>
                                                 <th>N° Expediente</th>
                                                 <th>Ingreso</th>
@@ -57,11 +57,12 @@
                                                 <th>vencimiento</th>
                                                 <th>Notificación</th>
                                                 <th>Supervisión</th>
+                                                <th>Tipo Acogimiento</th>
                                                 <th>JENA</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
+                                            <tr class="bg-dark text-white">
                                                 <th>#</th>
                                                 <th>N° Expediente</th>
                                                 <th>Ingreso</th>
@@ -69,6 +70,7 @@
                                                 <th>vencimiento</th>
                                                 <th>Notificación</th>
                                                 <th>Supervisión</th>
+                                                <th>Tipo Acogimiento</th>
                                                 <th>JENA</th>
                                             </tr>
                                         </tfoot>
@@ -84,6 +86,7 @@
                                                 $fechaVencimiento=$fila['fechaVencimiento'];
                                                 $fechaNotificacion=$fila['fechaNotificacion'];
                                                 $fechaSupervision=$fila['fechaSupervision'];
+                                                $id_tipoAcogimiento=$fila['id_tipoAcogimiento'];
                                                 $JENA=$fila['JENA'];
                                                 echo "<tr>";
                                                     echo '<td>'.$id_control.'</td>';
@@ -93,6 +96,7 @@
                                                     echo '<td>'.$fechaVencimiento.'</td>';
                                                     echo '<td>'.$fechaNotificacion.'</td>';
                                                     echo '<td>'.$fechaSupervision.'</td>';
+                                                    echo '<td>'.$id_tipoAcogimiento.'</td>';
                                                     echo '<td>'.$JENA.'</td>';
                                                 echo "</tr>";
                                              } ?>
