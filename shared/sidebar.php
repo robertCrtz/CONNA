@@ -52,8 +52,8 @@
                     </a>
                 <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link"href="registro_usuario.php">Agregar Usuario</a>
-                        <a class="nav-link">Eliminar Caso</a>
+                        <a class="nav-link" href="registro_usuario.php">Agregar Usuario</a>
+                        <a class="nav-link" href="lista_usuarios.php">Listado de usuarios</a>
                     </nav>
                 </div>
 
