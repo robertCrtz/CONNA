@@ -84,6 +84,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+tr {
+  background: white;
+}
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -1730,13 +1734,13 @@ pre code {
 .table-primary,
 .table-primary > th,
 .table-primary > td {
-  background-color: #b8daff;
+  background-color: #ffffff;
 }
 .table-primary th,
 .table-primary td,
 .table-primary thead th,
 .table-primary tbody + tbody {
-  border-color: #7abaff;
+  border-color: #f4f9ff;
 }
 
 .table-hover .table-primary:hover {
