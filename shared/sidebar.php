@@ -22,7 +22,7 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="../vistas/agregar.php">Agregar Caso</a>
-                        <a class="nav-link">Eliminar Caso</a>
+                        <a class="nav-link">Lista de Casos</a>
                     </nav>
                 </div>
                 <?php// } ?>
