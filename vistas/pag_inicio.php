@@ -1,15 +1,12 @@
 <?php
     session_start();
-    include '../bd/conexion.php';
+    require_once'../Conna.php';
 
-    if($_SESSION["usuario"] === null){
-        header("Location: ../index.php");
-    }
-    $nombre = $_SESSION['nombre'];
-
-    $sql="SELECT * FROM control";
-    $resultado=mysqli_query($con,$sql);
+	$conn = new Conna();
+	$sql=("SELECT * FROM control");
+	$datos=$conn->consulta($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -21,7 +18,6 @@
         <link rel="stylesheet" href="../estilos.css">
         <link rel="stylesheet" href="../estilos/styles.css">
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -29,6 +25,7 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
                 <i class="fas fa-bars"></i>
             </button>
+            <h1 class="m-auto text-white navbar-brand">INICIO</h1>
             <!--Navbar-->
             <?php include '../shared/navbar.php' ?>
         </nav>
@@ -38,11 +35,19 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4 text-center">Inicio</h1>
+                        <!-- Buscador -->
+                        <div class="form-group mt-3">
+                            <div class="col-6 col-md-4">
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="lupa"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <input class="form-control" placeholder="Buscar" type="text" id="busqueda" aria-label="Buscar" aria-describedby="lupa">
+                                </div>
+                            </div>
+                        </div>
+                    
                         <!-- tabla -->
-                            <label for="busqueda" class="form-label"><i class="fas fa-search"></i></label>
-                                <input class="form-control mb-2" placeholder="Buscar" type="text" id="busqueda" style="width: 30%;">
-
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-1"></i> Casos actuales</div>
                             <div class="card-body">
@@ -75,31 +80,17 @@
                                             </tr>
                                         </tfoot>
                                         <tbody class="busquedatabla">
-                                            <?php
-                                                $sql="SELECT * FROM control";
-                                                $resultado=mysqli_query($con,$sql);
-                                                 while($fila = mysqli_fetch_array($resultado)) {
-                                                $id_control=$fila['id_control'];
-                                                $n_expediente=$fila['n_expediente'];
-                                                $fechaIngreso=$fila['fechaIngreso'];
-                                                $fechaMedida=$fila['fechaMedida'];
-                                                $fechaVencimiento=$fila['fechaVencimiento'];
-                                                $fechaNotificacion=$fila['fechaNotificacion'];
-                                                $fechaSupervision=$fila['fechaSupervision'];
-                                                $id_tipoAcogimiento=$fila['id_tipoAcogimiento'];
-                                                $JENA=$fila['JENA'];
-                                                echo "<tr>";
-                                                    echo '<td>'.$id_control.'</td>';
-                                                    echo '<td>'.$n_expediente.'</td>';
-                                                    echo '<td>'.$fechaIngreso.'</td>';
-                                                    echo '<td>'.$fechaMedida.'</td>';
-                                                    echo '<td>'.$fechaVencimiento.'</td>';
-                                                    echo '<td>'.$fechaNotificacion.'</td>';
-                                                    echo '<td>'.$fechaSupervision.'</td>';
-                                                    echo '<td>'.$id_tipoAcogimiento.'</td>';
-                                                    echo '<td>'.$JENA.'</td>';
-                                                echo "</tr>";
-                                             } ?>
+                                            <?php foreach ($datos as $fila){  ?>
+                                                <td align="center"><?php echo $fila['id_control']; ?></td>
+			                                    <td align="center"><?php echo $fila['n_expediente']; ?></td>
+                                                <td align="center"><?php echo $fila['fechaIngreso']; ?></td>
+                                                <td align="center"><?php echo $fila['fechaMedida']; ?></td>
+                                                <td align="center"><?php echo $fila['fechaVencimiento']; ?></td>
+                                                <td align="center"><?php echo $fila['fechaNotificacion']; ?></td>
+                                                <td align="center"><?php echo $fila['fechaSupervision']; ?></td>
+                                                <td align="center"><?php echo $fila['id_tipoAcogimiento']; ?></td>
+                                                <td align="center"><?php echo $fila['JENA']; ?></td>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -116,5 +107,6 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="../estilos/demo/datatables-demo.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </body>
 </html>

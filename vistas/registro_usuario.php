@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+   /* session_start();
     if($_SESSION["usuario"] === null){
         header("Location: ../index.php");
     }
@@ -30,12 +30,23 @@
 
                 //Si los datos enviados son TRUE...
                 if($query_insert){ 
-                    $alert='<p>Usuario creado correctamente</p>';
+                    echo 'Usuario creado correctamente';
                 }else{
                     $alert='<p>Error al crear el usuario</p>';
                 }
             }
         }
+    }*/
+    session_start();
+    if(isset($_POST['nombre'])){
+        require_once'../Conna.php';
+        $conn = new Conna();
+
+        $sql=("INSERT INTO usuarios (nombre,apellido,usuario,contrasena,id_rol)
+        VALUES('$_POST[nombre]','$_POST[apellido]','$_POST[usuario]','$_POST[contrasena]','$_POST[id_rol]')");
+
+        $comprobar=("SELECT * from usuarios WHERE usuario='$_POST[usuario]'");
+        $datos=$conn->agregar($sql,$comprobar);
     }
 ?>
 
@@ -115,6 +126,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../codigo.js"></script>     
-        <script src="../estilos/dist/swettalert2.all.min.js"></script>
+        <script src="../estilos/sweetalert2/sweetalert2.all.min.js"></script>
     </body>
 </html>
