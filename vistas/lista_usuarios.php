@@ -54,7 +54,7 @@
                                     
                                 </div>
                                 <div class="card-body">
-                                <div class="table-responsive">
+                                <div class="table-responsive table-hover">
                             <table class="table"  width="100%" cellspacing="0">
                                 <thead>
                                     <tr class="bg-dark text-white">
@@ -75,8 +75,8 @@
                                             <td><?php echo $fila['usuario']; ?></td>
                                             <td><?php echo $fila['contrasena']; ?></td>
                                             <td><?php echo $fila['id_rol']; ?></td>
-                                            <td><a href="edit.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-warning">Edit</a></td>
-                                            <td><a href="delete.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-danger">Delete</a></td>
+                                            <td><a href="edit.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-warning">Editar</a></td>
+                                            <td><a href="delete.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-danger">Eliminar</a></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

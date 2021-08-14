@@ -19,7 +19,7 @@
 			apellido='".$apellido."',
 			usuario='".$usuario."',
 			contrasena='".$contrasena."',
-			id_rol='".$id_rol."',
+			id_rol='".$id_rol."'
 			WHERE 
 			id_usuario='".$id."'";
 			mysqli_query($con, $sql2);
@@ -38,6 +38,7 @@
 		<title>Editar Usuarios</title>
 		<link rel="stylesheet" href="../estilos/styles.css">
 		<link rel="stylesheet" href="../estilos.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 		<!-- Bootstrap -->
 	</head>
 	<body class="sb-nav-fixed">
@@ -57,28 +58,33 @@
 			<div id="layoutSidenav_content" style="margin-top: 85px;">
 				<main>
 					<div class="container">
-						<h2 class="text-center mt-5">Edit Part</h2>
+						<h2 class="text-center">Editar usuarios</h2>
                         <form class="login-form validate-form" method="POST">
 
-                            <div class="wrap-input100" data-validate="Campo incorrecto">
+						<label class="form-label text-dark badge bg-info mt-3">Nombres:</label>
+                            <div class="wrap-input100">
                                 <input class="mb-2 input100" type="text" id="nombre" name="nombre" value="<?php echo $row['nombre'] ?>" placeholder="Nombre">
                                 <span class="focus-efecto"></span>
                             </div>
 
-                            <div class="wrap-input100" data-validate="Campo incorrecto">
+							<label class="form-label text-dark badge bg-info mt-3">Apellidos:</label>
+                            <div class="wrap-input100">
                                 <input class="mb-2 input100" type="text" id="apellido" name="apellido" value="<?php echo $row['apellido'] ?>" placeholder="Apellido">
                                 <span class="focus-efecto"></span>
                             </div>
                             
-                            <div class="wrap-input100" data-validate = "Usuario incorrecto">
+							<label class="form-label text-dark badge bg-info mt-3">Usuario:</label>
+                            <div class="wrap-input100">
                                 <input class="mb-2 input100" type="text" id="usuario" name="usuario" value="<?php echo $row['usuario'] ?>" placeholder="Correo electrónico">
                                 <span class="focus-efecto"></span>
                             </div>
                             
-                            <div class="wrap-input100" data-validate="Contraseña incorrecta">
-                                <input class="mb-2 input100" type="text" id="contrasena" value="<?php echo $row['contrasena'] ?>" name="contrasena" placeholder="Contraseña">
-                                <span class="focus-efecto"></span>
-                            </div>
+							<label class="form-label text-dark badge bg-info mt-3">Contraseña:</label>
+							<div class="wrap-input100">
+								<input class="mb-2 input100" type="text" id="contrasena" value="<?php echo $row['contrasena'] ?>" name="contrasena" placeholder="Contraseña">
+								<span class="focus-efecto"></span>
+							</div>
+
                             <!--<div class="wrap-input100" data-validate="Seleccione un rol">
                                 <select class="form-control mb-2 input100" id="id_rol" name="id_rol" placeholder="Rol">
                                     <option disabled selected>Seleccionar rol</option>

@@ -1,49 +1,73 @@
 <?php
-include '../bd/conexion.php';
-session_start();
+    include '../bd/conexion.php';
+    session_start();
 
-if($_SESSION["usuario"] === null){
-    header("Location: ../index.php");
-}
-
+    if($_SESSION["usuario"] === null){
+        header("Location: ../index.php");
+    }
 	if(isset($_POST['guardar'])){
+        $id_persona=$_POST['id_persona'];
 		$n_expediente=$_POST['n_expediente'];
 		$fechaIngreso=$_POST['fechaIngreso'];
 		$fechaMedida=$_POST['fechaMedida'];
 		$fechaVencimiento=$_POST['fechaVencimiento'];
 		$fechaNotificacion=$_POST['fechaNotificacion'];
         $fechaSupervision=$_POST['fechaSupervision'];
-        $id_tipoAcogimiento=$fila['id_tipoAcogimiento'];
+        $trabajoSocial=$_POST['trabajoSocial'];
+        $psicologia=$_POST['psicologia'];
+        $escucha=$_POST['escucha'];
         $JENA=$_POST['JENA'];
+        $id_tipoAcogimiento=$_POST['id_tipoAcogimiento'];
+        $id_centroAcogimiento=$_POST['id_centroAcogimiento'];
+        $descripAcogimiento=$_POST['descripAcogimiento'];
+        $procuradoria=$_POST['procuradoria'];
+        $descripProcurador=$_POST['descripProcurador'];
+        $id_usuario=$_POST['id_usuario'];
 
-		if($n_expediente!=null || $fechaIngreso!=null || $fechaMedida!=null || $fechaVencimiento!=null || $fechaNotificacion!=null || $fechaSupervision!=null ||
-            $id_tipoAcogimiento!=null || $JENA!=null){
+		if($n_expediente!=null || $fechaIngreso!=null || $fechaMedida!=null || $fechaVencimiento!=null || $fechaNotificacion!=null || $fechaSupervision!=null || $id_tipoAcogimiento!=null || $JENA!=null){
 
 			$sql="INSERT INTO control(
+                id_persona, 
                 n_expediente, 
                 fechaIngreso, 
                 fechaMedida, 
                 fechaVencimiento, 
                 fechaNotificacion, 
                 fechaSupervision,
+                trabajoSocial,
+                psicologia,
+                escucha,
+                JENA,
                 id_tipoAcogimiento, 
-                JENA)
-			VALUES('".$n_expediente."',
+                id_centroAcogimiento,
+                descripAcogimiento,
+                procuradoria,
+                descripProcurador,
+                id_usuario)
+			VALUES('".$id_persona."',
+                '".$n_expediente."',
                 '".$fechaIngreso."',
                 '".$fechaMedida."',
                 '".$fechaVencimiento."',
                 '".$fechaNotificacion."',
                 '".$fechaSupervision."',
-                '" .$id_tipoAcogimiento."',
-                '".$JENA."'
+                '".$trabajoSocial."',
+                '".$psicologia."',
+                '".$escucha."',
+                '".$JENA."',
+                '".$id_tipoAcogimiento."',
+                '".$id_centroAcogimiento."',
+                '".$descripAcogimiento."',
+                '".$procuradoria."',
+                '".$descripProcurador."',
+                '".$id_usuario."'
             )";
         mysqli_query($con,$sql);
         if($n_expediente=1){
             header('Location: pag_inicio.php');
         }
 		}else{
-			echo '<script language="javascript">alert("Alerta: Los campos estan vacios");</script>'; 
-        
+			echo '<script>alert("Alerta: Los campos estan vacios");</script>'; 
 	    }
     }
 ?>
@@ -65,7 +89,10 @@ if($_SESSION["usuario"] === null){
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="../">CONNA</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h2 class="m-auto text-white text-center">Nuevo caso</h2>
             <!--Navbar-->
             <?php include '../shared/navbar.php' ?>
         </nav>
@@ -74,12 +101,11 @@ if($_SESSION["usuario"] === null){
             <?php include '../shared/sidebar.php' ?>
             <div id="layoutSidenav_content">
                 <div class="container">
-                    <h1 class="text-center">Nuevo caso</h1>
                     <form class="login-form" method="post">
-                        <div class="row mt-5">
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="wrap-input100 mb-3" data-validate = "Usuario incorrecto">
-                                    <input type="text" name="n_expediente" class="input100" placeholder="N° Expediente">
+                                    <input type="number" name="n_expediente" class="input100" placeholder="N° Expediente">
                                     <span class="focus-efecto"></span>
                                 </div>
                                 <div class="wrap-input100">
@@ -92,13 +118,10 @@ if($_SESSION["usuario"] === null){
                                     <input type="date" name="fechaMedida" class="input100">
                                     <span class="focus-efecto"></span>
                                 </div>
-                                <div class="wrap-input100">
-                                    <label class="form-label badge bg-info mt-3">Fecha de Vencimiento</label>
-                                    <input type="date" name="fechaVencimiento" class="input100">
+                                <div class="wrap-input100 mt-2">
+                                    <input type="text" name="JENA" class="input100" placeholder="JENA">
                                     <span class="focus-efecto"></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="wrap-input100">
                                     <label class="form-label badge bg-info">Fecha de Notificación</label>
                                     <input type="date" name="fechaNotificacion" class="input100">
@@ -109,6 +132,27 @@ if($_SESSION["usuario"] === null){
                                     <input type="date" name="fechaSupervision" class="input100">
                                     <span class="focus-efecto"></span>
                                 </div>
+                                <div class="wrap-input100  mt-2">
+                                    <label class="form-label badge bg-info mt-3">Trabajo social</label>
+                                    <input type="date" name="trabajoSocial" class="input100">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <div class="wrap-input100  mt-2">
+                                    <label class="form-label badge bg-info mt-3">Psicología</label>
+                                    <input type="date" name="psicologia" class="input100">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="wrap-input100 mb-3">
+                                    <input type="text" name="escucha" class="input100" placeholder="Escucha">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <div class="wrap-input100">
+                                    <label class="form-label badge bg-info mt-3">Fecha de Vencimiento</label>
+                                    <input type="date" name="fechaVencimiento" class="input100">
+                                    <span class="focus-efecto"></span>
+                                </div>
                                 <div class="wrap-input100" data-validate="Tipo de Acogimiento">
                                     <select class="form-control mb-2 input100" id="id_tipoAcogimiento" name="id_tipoAcogimiento" placeholder="Tipo de Acogimiento">
                                         <option disabled selected>Seleccionar el tipo de Acogimiento</option>
@@ -117,13 +161,39 @@ if($_SESSION["usuario"] === null){
                                     </select>
                                     <span class="focus-efecto"></span>
                                 </div>
-                                <div class="wrap-input100 mt-2">
-                                    <input type="text" name="JENA" class="input100" placeholder="JENA">
+                                <div class="wrap-input100" data-validate="Tipo de Acogimiento">
+                                    <select class="form-control mb-2 input100" id="id_centroAcogimiento" name="id_centroAcogimiento" placeholder="Tipo de Acogimiento">
+                                        <option disabled selected>Seleccionar el Centro del Acogimiento</option>
+                                        <option value="1">San Salvador</option>
+                                        <option value="2">Santa Ana</option>
+                                    </select>
                                     <span class="focus-efecto"></span>
                                 </div>
+                                <div class="wrap-input100  mt-2">
+                                    <input type="text" name="descripAcogimiento" class="input100" placeholder="Descripción del Acogimiento">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <div class="wrap-input100  mt-2">
+                                    <input type="text" name="procuradoria" class="input100" placeholder="Procuradoría">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <div class="wrap-input100  mt-2">
+                                    <input type="text" name="descripProcurador" class="input100" placeholder="Descripción del Procurador">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <div class="wrap-input100  mt-2">
+                                    <label class="form-label badge bg-info mt-3">Usuario</label>
+                                    <input type="number" name="id_usuario" class="input100">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <div class="wrap-input100  mt-2">
+                                    <label class="form-label badge bg-info mt-3">Persona</label>
+                                    <input type="number" name="id_persona" class="input100">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <button type="submit" name="guardar" class="btn btn-primary ml-5">Guardar Caso</button>
                             </div>
                         </div>
-                        <button type="submit" name="guardar" class="btn btn-primary">Guardar Caso</button>
                     </form>
                 </div>
                 <?php include '../shared/footer.php' ?>

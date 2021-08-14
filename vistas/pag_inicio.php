@@ -46,50 +46,44 @@
                                 </div>
                             </div>
                         </div>
-                    
                         <!-- tabla -->
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-1"></i> Casos actuales</div>
                             <div class="card-body">
-                                <div class="table-responsive">
+                                <div class="table-responsive table-hover">
                                     <table class="table table-bordered"  width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="bg-dark text-white">
-                                                <th>#</th>
                                                 <th>N° Expediente</th>
                                                 <th>Ingreso</th>
                                                 <th>Medida</th>
-                                                <th>vencimiento</th>
+                                                <th>Vencimiento</th>
                                                 <th>Notificación</th>
                                                 <th>Supervisión</th>
                                                 <th>Tipo Acogimiento</th>
                                                 <th>JENA</th>
+                                                <th>Psicologia</th>
+                                                <th>Procuradoria</th>
+                                                <th>Trabajo Social</th>
+                                                <th>Escucha</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr class="bg-dark text-white">
-                                                <th>#</th>
-                                                <th>N° Expediente</th>
-                                                <th>Ingreso</th>
-                                                <th>Medida</th>
-                                                <th>vencimiento</th>
-                                                <th>Notificación</th>
-                                                <th>Supervisión</th>
-                                                <th>Tipo Acogimiento</th>
-                                                <th>JENA</th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody class="busquedatabla">
                                             <?php foreach ($datos as $fila){  ?>
-                                                <td align="center"><?php echo $fila['id_control']; ?></td>
-			                                    <td align="center"><?php echo $fila['n_expediente']; ?></td>
-                                                <td align="center"><?php echo $fila['fechaIngreso']; ?></td>
-                                                <td align="center"><?php echo $fila['fechaMedida']; ?></td>
-                                                <td align="center"><?php echo $fila['fechaVencimiento']; ?></td>
-                                                <td align="center"><?php echo $fila['fechaNotificacion']; ?></td>
-                                                <td align="center"><?php echo $fila['fechaSupervision']; ?></td>
-                                                <td align="center"><?php echo $fila['id_tipoAcogimiento']; ?></td>
-                                                <td align="center"><?php echo $fila['JENA']; ?></td>
+                                                <tr>
+                                                    <td align="center"><?php echo $fila['n_expediente']; ?></td>
+                                                    <td align="center"><?php echo $fila['fechaIngreso']; ?></td>
+                                                    <td align="center"><?php echo $fila['fechaMedida']; ?></td>
+                                                    <td align="center"><?php echo $fila['fechaVencimiento']; ?></td>
+                                                    <td align="center"><?php echo $fila['fechaNotificacion']; ?></td>
+                                                    <td align="center"><?php echo $fila['fechaSupervision']; ?></td>
+                                                    <td align="center"><?php echo $fila['id_tipoAcogimiento']; ?></td>
+                                                    <td align="center"><?php echo $fila['JENA']; ?></td>
+                                                    <td align="center"><?php echo $fila['psicologia']; ?></td>
+                                                    <td align="center"><?php echo $fila['procuradoria']; ?></td>
+                                                    <td align="center"><?php echo $fila['trabajoSocial']; ?></td>
+                                                    <td align="center"><?php echo $fila['escucha']; ?></td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>

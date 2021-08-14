@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="author" content="" />
-        <title>Principal</title>
+        <title>Tipo de Acogimiento</title>
         <link rel="stylesheet" href="../estilos.css">
         <link href="../estilos/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -29,6 +29,7 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
                 <i class="fas fa-bars"></i>
             </button>
+            <h2 class="m-auto text-center text-white">Tipo de acogimiento</h2>
             <!--Navbar-->
             <?php include '../shared/navbar.php' ?>
         </nav>
@@ -37,59 +38,55 @@
             <?php include '../shared/sidebar.php' ?>
             <div id="layoutSidenav_content">
                 <div class="container">
-                    <h1 class="mt-4 text-center">Tipo de acogimiento</h1>
-                        <form class="login-form validate-form" action="registro_usuario.php" method="POST">
-                            <div class="row mt-5">
-                                <div class="col-md-6">                     
-                                    <div class="wrap-input100" data-validate = "Usuario incorrecto">
-                                        <input class="mb-2 input100" type="text" id="usuario" name="usuario" placeholder="Ingresar nuevo tipo de acogimiento">
-                                        <span class="focus-efecto"></span>
+                    <form class="login-form validate-form" action="registro_usuario.php" method="POST">
+                        <div class="row mt-5">
+                            <div class="col-md-6">                     
+                                <div class="wrap-input100" data-validate = "Usuario incorrecto">
+                                    <input class="mb-2 input100" type="text" id="usuario" name="usuario" placeholder="Ingresar nuevo tipo de acogimiento">
+                                    <span class="focus-efecto"></span>
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        Tipos de acogimiento registrados
                                     </div>
-
-                                    <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header text-center">
-                                            Tipos de acogimiento registrados
-                                        </div>
-                                        <div class="card-body">
+                                    <div class="card-body">
                                         <div class="table-responsive">
-                                    <table class="table table-bordered"  width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr class="bg-dark text-white">
-                                                <th>#</th>
-                                                <th>Tipo de acogimiento</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr class="bg-dark text-white">
-                                                <th>#</th>
-                                                <th>Tipo de acogimiento</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody class="busquedatabla">
-                                            <?php
-                                                $sql="SELECT * FROM tipo_acogimiento";
-                                                $resultado=mysqli_query($con,$sql);
-                                                 while($fila = mysqli_fetch_array($resultado)) {
-                                                $id_tipoAcogimiento=$fila['id_tipoAcogimiento'];
-                                                $nombreAcogimiento=$fila['nombreAcogimiento'];
-                                                echo "<tr>";
-                                                    echo '<td>'.$id_tipoAcogimiento.'</td>';
-                                                    echo '<td>'.$nombreAcogimiento.'</td>';
-                                                echo "</tr>";
-                                             } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            <table class="table table-bordered"  width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr class="bg-dark text-white">
+                                                        <th>#</th>
+                                                        <th>Tipo de acogimiento</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr class="bg-dark text-white">
+                                                        <th>#</th>
+                                                        <th>Tipo de acogimiento</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody class="busquedatabla">
+                                                    <?php
+                                                        $sql="SELECT * FROM tipo_acogimiento";
+                                                        $resultado=mysqli_query($con,$sql);
+                                                            while($fila = mysqli_fetch_array($resultado)) {
+                                                        $id_tipoAcogimiento=$fila['id_tipoAcogimiento'];
+                                                        $nombreAcogimiento=$fila['nombreAcogimiento'];
+                                                        echo "<tr>";
+                                                            echo '<td>'.$id_tipoAcogimiento.'</td>';
+                                                            echo '<td>'.$nombreAcogimiento.'</td>';
+                                                        echo "</tr>";
+                                                        } ?>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-
-                    
+                        </div>
+                    </form>
                 </div>
                 <?php include '../shared/footer.php' ?>
             </div>
