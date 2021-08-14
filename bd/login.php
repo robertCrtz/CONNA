@@ -12,9 +12,7 @@ $resultado=mysqli_query($con,$consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){
-  
     header("location:../vistas/pag_inicio.php");
-
 }else{
     ?>
   <h1 class="bad">ERROR DE AUTENTIFICACION</h1>
