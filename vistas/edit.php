@@ -96,6 +96,9 @@
                             
                             <div class="container">
                                 <div class="col-12">
+									<a href="lista_usuarios.php">
+										<button type="button" class="btn btn-danger">Cancelar</button>
+									</a>
                                     <button type="submit" name="actualizar" class="btn btn-primary">Agregar</button>
                                 </div>
                             </div>

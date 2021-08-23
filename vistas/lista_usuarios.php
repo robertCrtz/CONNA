@@ -24,7 +24,7 @@
     </head>
     
     <body  class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="#">CONNA</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
                 <i class="fas fa-bars"></i>
@@ -49,38 +49,38 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="card">
-                                <div class="card-header text-center">
-                                    
-                                </div>
-                                <div class="card-body">
+                        <div class="card">
+                            <div class="card-header text-center"> </div>
+                            <div class="card-body">
                                 <div class="table-responsive table-hover">
-                            <table class="table"  width="100%" cellspacing="0">
-                                <thead>
-                                    <tr class="bg-dark text-white">
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Usuario</th>
-                                        <th>Contraseña</th>
-                                        <th>Rol</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="busquedatabla">
-                                    <?php foreach ($datos as $fila){  ?>
-                                        <tr>
-                                            <td><?php echo $fila['nombre']; ?></td>
-                                            <td><?php echo $fila['apellido']; ?></td>
-                                            <td><?php echo $fila['usuario']; ?></td>
-                                            <td><?php echo $fila['contrasena']; ?></td>
-                                            <td><?php echo $fila['id_rol']; ?></td>
-                                            <td><a href="edit.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-warning">Editar</a></td>
-                                            <td><a href="delete.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-danger">Eliminar</a></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
+                                    <table class="table"  width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr class="bg-dark text-white">
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Usuario</th>
+                                                <th>Contraseña</th>
+                                                <th>Rol</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="busquedatabla">
+                                            <?php foreach ($datos as $fila){  ?>
+                                                <tr>
+                                                    <td><?php echo $fila['nombre']; ?></td>
+                                                    <td><?php echo $fila['apellido']; ?></td>
+                                                    <td><?php echo $fila['usuario']; ?></td>
+                                                    <td><?php echo $fila['contrasena']; ?></td>
+                                                    <td><?php echo $fila['id_rol']; ?></td>
+                                                    <td><a href="edit.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-warning">Editar</a></td>
+                                                    <td><a href="delete.php?id=<?php echo $fila['id_usuario'];?>" class="btn btn-sm btn-danger">Eliminar</a></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>     
                 </main>
