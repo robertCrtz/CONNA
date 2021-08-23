@@ -73,7 +73,7 @@
             <div class="sb-sidenav-footer">
                 <div class="small">Ingresado como:
             </div>
-            <?php echo $_SESSION["usuario"];?>
+            <?php echo $_SESSION["id_rol"];?>
         </div>
     </nav>
 </div>
