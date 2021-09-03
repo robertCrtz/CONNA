@@ -1,5 +1,3 @@
-<script src="estilos/sweetalert2/sweetalert2.all.min.js"></script>
-<link href="estilos/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
 <?php
 	class Conna{
 		function __construct(){
